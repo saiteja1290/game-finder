@@ -1,27 +1,16 @@
 'use client';
 
-import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { Button } from "@/components/ui/button";
-
+// import { useAuth } from '@/contexts/AuthContext';
+import { useAuth } from '../contexts/AuthContext';
 export default function NavBar() {
-    const [user, setUser] = useState(null);
+    const { user, logout } = useAuth();
     const router = useRouter();
 
-    useEffect(() => {
-        // Check if user is logged in
-        const token = localStorage.getItem('token');
-        if (token) {
-            // Decode the token to get user information
-            const decodedToken = JSON.parse(atob(token.split('.')[1]));
-            setUser({ username: decodedToken.username });
-        }
-    }, []);
-
     const handleLogout = () => {
-        localStorage.removeItem('token');
-        setUser(null);
+        logout();
         router.push('/');
     };
 
@@ -38,7 +27,7 @@ export default function NavBar() {
                             <Link href="/create-game">
                                 <Button variant="ghost">Create Game</Button>
                             </Link>
-                            <span className="mr-4 font-bold">{user.username}</span>
+                            <span className="mr-4">Welcome, {user.username}!</span>
                             <Button onClick={handleLogout} variant="destructive">Logout</Button>
                         </>
                     ) : (
