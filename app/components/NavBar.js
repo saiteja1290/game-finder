@@ -15,7 +15,7 @@ export default function NavBar() {
     };
 
     return (
-        <nav className="bg-gray-800 text-white p-4">
+        <nav className="bg-white text-black p-4">
             <div className="container mx-auto flex justify-between items-center">
                 <Link href="/" className="text-xl font-bold">Game Finder</Link>
                 <div className="space-x-4 flex items-center">
