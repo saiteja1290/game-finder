@@ -3,8 +3,8 @@
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { Button } from "@/components/ui/button";
-// import { useAuth } from '@/contexts/AuthContext';
 import { useAuth } from '../contexts/AuthContext';
+import { ModeToggle } from './ModeToggle';
 export default function NavBar() {
     const { user, logout } = useAuth();
     const router = useRouter();
@@ -15,7 +15,7 @@ export default function NavBar() {
     };
 
     return (
-        <nav className="bg-white text-black p-4">
+        <nav className="p-4">
             <div className="container mx-auto flex justify-between items-center">
                 <Link href="/" className="text-xl font-bold">Game Finder</Link>
                 <div className="space-x-4 flex items-center">
@@ -35,6 +35,7 @@ export default function NavBar() {
                             <Button>Log in</Button>
                         </Link>
                     )}
+                    <ModeToggle />
                 </div>
             </div>
         </nav>

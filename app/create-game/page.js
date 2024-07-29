@@ -5,10 +5,12 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import axios from 'axios';
 import { useRouter } from 'next/navigation';
+// import { DatePickerDemo } from './DatePickerDemo'; // Adjust the import path as needed
+import { DatePickerDemo } from '../components/DatePickerDemo';
 
 export default function CreateGame() {
     const [location, setLocation] = useState('');
-    const [date, setDate] = useState('');
+    const [date, setDate] = useState(undefined);
     const [price, setPrice] = useState('');
     const [totalPlayers, setTotalPlayers] = useState('');
     const router = useRouter();
@@ -16,7 +18,12 @@ export default function CreateGame() {
     const handleCreateGame = async (e) => {
         e.preventDefault();
         try {
-            await axios.post('/api/games', { location, date, price, totalPlayers }, {
+            await axios.post('/api/games', {
+                location,
+                date: date ? date.toISOString() : null,
+                price,
+                totalPlayers
+            }, {
                 headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
             });
             router.push('/games');
@@ -36,12 +43,12 @@ export default function CreateGame() {
                     onChange={(e) => setLocation(e.target.value)}
                     className="mb-3"
                 />
-                <Input
-                    type="date"
-                    value={date}
-                    onChange={(e) => setDate(e.target.value)}
-                    className="mb-3"
-                />
+                <div className="mb-3">
+                    <DatePickerDemo
+                        date={date}
+                        setDate={setDate}
+                    />
+                </div>
                 <Input
                     type="number"
                     placeholder="Price"
