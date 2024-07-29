@@ -1,6 +1,7 @@
 import './globals.css'
 import { AuthProvider } from './contexts/AuthContext'
-import NavBar from './components/NavBar'
+import NavBar from './components/NavBar';
+// import { FloatingNav } from './components/ui/floating-navbar';
 import { ThemeProvider } from './components/theme-provider'
 import { GeistSans } from "geist/font/sans";
 
