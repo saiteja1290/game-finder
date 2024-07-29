@@ -64,6 +64,9 @@ export default function GameDetails({ params }) {
                 <CardHeader>
                     <CardTitle>{game.location}</CardTitle>
                     <CardDescription>Date: {game.date}</CardDescription>
+                    <CardDescription className='text-sm'>
+                        Created By: {players.length > 0 ? players[0].username : 'Unknown'}
+                    </CardDescription>
                 </CardHeader>
                 <CardContent>
                     <p>Price: {game.price}/-</p>
