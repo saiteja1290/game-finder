@@ -102,7 +102,7 @@ export default function TypewriterEffectSmoothDemo() {
       text: "People",
     },
     {
-      text: "Aceternity.",
+      text: "Game Finder.",
       className: "text-blue-500 dark:text-blue-500",
     },
   ];
@@ -114,12 +114,15 @@ export default function TypewriterEffectSmoothDemo() {
       <TypewriterEffectSmooth words={words} />
       <div className="flex flex-col md:flex-row space-y-4 md:space-y-0 space-x-0 md:space-x-4">
         <Link href="/register">
-          <button className="w-40 h-10 rounded-xl  border dark:border-white border-black text-white text-sm">
-            Join now
+          <button className="p-[3px] w-40 relative ">
+            <div className="absolute inset-0 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-sm" />
+            <div className="px-8 py-2  bg-black rounded-[6px]  relative group transition duration-200 text-white hover:bg-transparent">
+              Signup
+            </div>
           </button>
         </Link>
         <Link href="/login">
-          <button className="w-40 h-10 rounded-xl bg-white text-black border border-black  text-sm" href='/login'>
+          <button className="inline-flex w-40 h-10 animate-shimmer items-center justify-center rounded-md border border-slate-800 bg-[linear-gradient(110deg,#000103,45%,#1e2631,55%,#000103)] bg-[length:200%_100%] px-6 font-medium text-slate-400 transition-colors focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50">
             Log in
           </button>
         </Link>

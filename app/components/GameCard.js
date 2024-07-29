@@ -3,12 +3,13 @@ import { Button } from "@/components/ui/button";
 import Link from 'next/link';
 
 export default function GameCard({ game, onJoin, onUnjoin, userJoined }) {
-
+    const isoDateString = "2024-07-02T18:30:00.000Z";
+    const dateOnly = isoDateString.slice(0, 10);
     return (
         <Card>
             <CardHeader>
                 <CardTitle>{game.location}</CardTitle>
-                <CardDescription>{game.date}</CardDescription>
+                <CardDescription>{dateOnly}</CardDescription>
             </CardHeader>
             <CardContent>
                 <p>Price: {game.price}/-</p>
@@ -18,6 +19,7 @@ export default function GameCard({ game, onJoin, onUnjoin, userJoined }) {
                 {userJoined ? (
                     <Button onClick={() => onUnjoin(game._id.toString())}>Unjoin</Button>
                 ) : (
+
                     <Button onClick={() => onJoin(game._id.toString())}>Join Game</Button>
                 )}
                 <Link href={`/games/${game._id}`}>
