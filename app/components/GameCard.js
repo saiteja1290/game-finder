@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import Link from 'next/link';
 
 export default function GameCard({ game, onJoin, onUnjoin, userJoined }) {
-    const isoDateString = "2024-07-02T18:30:00.000Z";
+    const isoDateString = game.date;
     const dateOnly = isoDateString.slice(0, 10);
     return (
         <Card>
