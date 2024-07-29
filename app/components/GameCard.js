@@ -2,7 +2,8 @@ import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter }
 import { Button } from "@/components/ui/button";
 import Link from 'next/link';
 
-export default function GameCard({ game, onJoin }) {
+export default function GameCard({ game, onJoin, onUnjoin, userJoined }) {
+
     return (
         <Card>
             <CardHeader>
@@ -14,7 +15,11 @@ export default function GameCard({ game, onJoin }) {
                 <p>Players: {game.currentPlayers}/{game.totalPlayers}</p>
             </CardContent>
             <CardFooter className="flex justify-between">
-                <Button onClick={() => onJoin(game._id.toString())}>Join Game</Button>
+                {userJoined ? (
+                    <Button onClick={() => onUnjoin(game._id.toString())}>Unjoin</Button>
+                ) : (
+                    <Button onClick={() => onJoin(game._id.toString())}>Join Game</Button>
+                )}
                 <Link href={`/games/${game._id}`}>
                     <Button variant="outline">View Details</Button>
                 </Link>
